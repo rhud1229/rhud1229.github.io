@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<title>NBA</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		#walkContainer {
+			position: relative;
+			width: 400px;
+			height: 400px;
+			background-color: #000;
+			overflow: hidden;
+		}
+		
+		#walker {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 200px;
+			background-image: url('walking.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+			animation: walkAnimation 1s steps(4) infinite;
+		}
+
+		@keyframes walkAnimation {
+			from { background-position: 0 0; }
+			to { background-position: -400px 0; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="teams.html">Teams</a>
+			<a href="players.html">Players</a>
+			<a href="championships.html">Championships</a>
+			<a href="walking.html">Walking</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+		</nav>
+		<script>
+			function myFunction() {
+				var x = document.getElementsByTagName("nav")[0];
+				if (x.className === "") {
+					x.className += " responsive";
+				} else {
+					x.className = "";
+				}
+			}
+		</script>
+	</header>
+	<main>
+		<div id="walkContainer">
+			<div id="walker"></div>
+		</div>
+	</main>
+	<script>
+		// JavaScript code for animating the walking guy
+		window.addEventListener("DOMContentLoaded", function() {
+			var walker = document.getElementById("walker");
+			var position = 0;
+			var walkingInterval = setInterval(moveWalker, 200);
+
+			function moveWalker() {
+				position += 100;
+				if (position > 300) {
+					position = 0;
+				}
+				walker.style.left = position + "px";
+			}
+		});
+	</script>
+</body>
+</html>
